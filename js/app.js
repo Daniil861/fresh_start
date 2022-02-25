@@ -430,6 +430,7 @@
         const targetElement = e.target;
         if (targetElement.closest(".acces-preloader__play")) {
             preloader.classList.add("_hide");
+            document.querySelector(".wrapper").classList.add("_visible");
             sessionStorage.setItem("preloader", true);
         }
         if (targetElement.closest(".game__box")) {
