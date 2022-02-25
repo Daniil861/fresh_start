@@ -415,6 +415,8 @@
     const game_box = document.querySelectorAll(".game__box");
     const game_open_box = document.querySelector(".game__open-box");
     const cristall = document.querySelector(".header-info__icon");
+    const shooting_items = document.querySelectorAll(".shooting__item");
+    const shooting_gun = document.querySelector(".shooting__gun");
     let points = document.querySelector(".header-info__coins");
     if (sessionStorage.getItem("points")) {
         if (document.querySelector(".slot-one")) points.textContent = sessionStorage.getItem("points");
@@ -422,6 +424,8 @@
         if (document.querySelector(".slot-three")) points.textContent = sessionStorage.getItem("points");
         if (document.querySelector(".slot-four")) points.textContent = sessionStorage.getItem("points");
     } else sessionStorage.setItem("points", 500);
+    let count_shoot_items = [];
+    let count = 0;
     document.addEventListener("click", (e => {
         const targetElement = e.target;
         if (targetElement.closest(".acces-preloader__play")) {
@@ -446,11 +450,42 @@
         if (targetElement.closest(".main__pin-two")) location.href = "game_two.html";
         if (targetElement.closest(".main__pin-three")) location.href = "game_three.html";
         if (targetElement.closest(".main__pin-four")) location.href = "game_four.html";
+        if (targetElement.closest(".shooting__box")) {
+            let random = getUniqeNum();
+            if (count < 5) {
+                shooting_gun.classList.add("_shoot");
+                setTimeout((() => {
+                    shooting_gun.classList.remove("_shoot");
+                }), 3e3);
+                shooting_items[random].classList.add("_active");
+                document.querySelector(".shooting__box").style.pointerEvents = "none";
+                let points_cristall = +shooting_items[random].dataset.bonus;
+                let a = +sessionStorage.getItem("points");
+                sessionStorage.setItem("points", a + points_cristall);
+                setTimeout((() => {
+                    document.querySelector(".shooting__box").style.pointerEvents = "fill";
+                }), 2e3);
+                count++;
+            }
+            if (5 == count) {
+                document.querySelector(".shooting__box").style.pointerEvents = "none";
+                setTimeout((() => {
+                    document.querySelector(".screen").classList.add("_active");
+                }), 4e3);
+            }
+        }
     }));
+    function getUniqeNum() {
+        let randomItem = Math.floor(Math.random() * (9 - 0) + 0);
+        if (count_shoot_items.includes(randomItem)) return getUniqeNum(); else if (!count_shoot_items.includes(randomItem)) {
+            count_shoot_items.push(randomItem);
+            return randomItem;
+        }
+    }
     var minTime = 500;
     var maxTime = 2e3;
     function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
+        return Math.floor(Math.random() * (max - min) + min);
     }
     var casino1 = document.querySelector("#slot1");
     var casino2 = document.querySelector("#slot2");
