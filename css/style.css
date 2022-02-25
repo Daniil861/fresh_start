@@ -146,6 +146,9 @@ body._loaded {
   transform: translateX(-50%);
   z-index: 6;
 }
+.button-lobby:active {
+  transform: translateX(-50%) translateY(3px);
+}
 .button-lobby img {
   max-width: 200px;
 }
@@ -155,6 +158,9 @@ body._loaded {
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
+}
+.button-about:active {
+  transform: translateX(-50%) translateY(3px);
 }
 .button-about img {
   max-width: 250px;
@@ -846,6 +852,9 @@ body._loaded {
   top: 5px;
   left: 0;
 }
+.header-info__button-lobby:active {
+  transform: translateY(3px);
+}
 .header-info__button-lobby img {
   max-width: 150px;
 }
@@ -933,6 +942,9 @@ body._loaded {
   .footer-button {
     top: -30px;
   }
+}
+.footer-button__button:active {
+  transform: translateY(3px);
 }
 .footer-button__button._hold {
   pointer-events: none;
@@ -1063,13 +1075,13 @@ body._loaded {
   }
 }
 .slot-four__column .slotMachineContainer {
-  padding-top: calc(21vh - 15px);
+  padding-top: calc(20vh - 18px);
 }
 .slot-four__item {
   height: calc(16vh - 1px);
 }
 .slot-four__item_1 img {
-  max-width: 90%;
+  max-width: 85%;
 }
 @media (max-height: 43.75em) {
   .slot-four__item_1 {
@@ -1082,7 +1094,7 @@ body._loaded {
   }
 }
 .slot-four__item_2 img {
-  max-width: 75%;
+  max-width: 70%;
 }
 @media (max-height: 43.75em) {
   .slot-four__item_2 {
@@ -1098,7 +1110,7 @@ body._loaded {
   position: relative;
 }
 .slot-four__item_3 img {
-  max-width: 100%;
+  max-width: 95%;
 }
 @media (max-height: 43.75em) {
   .slot-four__item_3 {
@@ -1111,7 +1123,7 @@ body._loaded {
   }
 }
 .slot-four__item_4 img {
-  max-width: 85%;
+  max-width: 80%;
 }
 @media (max-height: 43.75em) {
   .slot-four__item_4 {
