@@ -144,6 +144,7 @@ body._loaded {
   top: 1.875rem;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 6;
 }
 .button-lobby img {
   max-width: 200px;
@@ -1122,6 +1123,131 @@ body._loaded {
     max-width: 75%;
   }
 }
+.screen {
+  background-color: rgba(0, 0, 0, 0.85);
+  position: absolute;
+  top: -200%;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 5;
+  transition: all 0.3s ease 0s;
+}
+.screen._active {
+  top: 0;
+}
+.screen__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.screen__text {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-family: Cunia;
+  padding: 0.9375rem 1.875rem;
+  background: linear-gradient(#7185bb, #251c3c);
+  border-radius: 1.875rem;
+}
+
+.shooting {
+  min-height: 100vh;
+  background: url("../img/shoot_game/bg_shoot_game.jpg") center/cover no-repeat;
+}
+.shooting__header {
+  height: 120px;
+}
+.shooting__body {
+  height: calc(100vh - 120px);
+}
+.shooting__box {
+  position: relative;
+  height: 70%;
+  background: url("../img/shoot_game/shoot_img_main.png") center/contain no-repeat;
+}
+.shooting__image-one {
+  position: relative;
+  padding: 0px 0px 19% 0px;
+}
+.shooting__image-one img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.shooting__grid {
+  display: grid;
+  grid-template: repeat(3, 1fr)/repeat(4, 1fr);
+  column-gap: 2.1875rem;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.shooting__item {
+  position: relative;
+}
+.shooting__item._active .shooting__aim {
+  animation: target 2s ease;
+}
+.shooting__item._active .shooting__cristall {
+  animation: shoot-cristall 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) 2s forwards;
+}
+.shooting__item._active .shooting__text {
+  animation: text 1.5s ease-out 2.7s;
+}
+.shooting__item_nine {
+  grid-column-start: 2;
+}
+.shooting__target img {
+  max-width: 3.125rem;
+}
+.shooting__aim {
+  position: absolute;
+  opacity: 0;
+}
+.shooting__aim img {
+  max-width: 3.4375rem;
+}
+.shooting__cristall {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+.shooting__cristall img {
+  max-width: 3.125rem;
+}
+.shooting__text {
+  font-family: Poppins;
+  font-size: 2.25rem;
+  line-height: 1.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: #035eb2;
+  background-image: linear-gradient(90deg, #d4f3ff, #035eb2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+.shooting__gun {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.shooting__gun._shoot {
+  animation: gun 2s ease-out;
+}
+.shooting__gun img {
+  max-width: 200px;
+}
+
 @keyframes box {
   0% {
     transform: scale(1);
@@ -1193,5 +1319,63 @@ body._loaded {
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+@keyframes target {
+  0% {
+    top: -40px;
+    left: -50px;
+    opacity: 1;
+  }
+  30% {
+    top: 14px;
+    left: -10px;
+    opacity: 1;
+  }
+  60% {
+    top: 3px;
+    left: 15px;
+    opacity: 1;
+  }
+  100% {
+    top: -2px;
+    left: -2px;
+    opacity: 1;
+  }
+}
+@keyframes shoot-cristall {
+  0% {
+    top: -100px;
+    opacity: 1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    top: -30px;
+  }
+}
+@keyframes text {
+  0% {
+    opacity: 1;
+    top: 0;
+  }
+  100% {
+    opacity: 0.5;
+    top: -140px;
+  }
+}
+@keyframes gun {
+  0% {
+    transform: rotateY(0deg) rotate3d(1, 1, 1, 0deg);
+  }
+  90% {
+    transform: rotateY(30deg) translate(10px, 0);
+  }
+  99% {
+    transform: rotateY(30deg) translate(20px, 20px);
+  }
+  100% {
+    transform: rotateY(30deg) translate(0, 0);
   }
 }
