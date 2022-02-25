@@ -106,7 +106,7 @@ body._loaded {
 
 .wrapper {
   min-height: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   overflow: hidden;
 }
@@ -115,6 +115,9 @@ body._loaded {
 }
 .wrapper > * {
   min-width: 0;
+}
+.wrapper._visible {
+  display: flex;
 }
 
 /*
