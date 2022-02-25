@@ -507,7 +507,7 @@ body._loaded {
 }
 
 .game {
-  background: url("../img/main/bg_sloy.jpg") center/cover no-repeat;
+  background: radial-gradient(#4e0098, #29004f);
   min-height: 100vh;
 }
 .game__bg-fire {
@@ -1258,6 +1258,11 @@ body._loaded {
 }
 .shooting__gun img {
   max-width: 200px;
+}
+@media (max-height: 42.5em) {
+  .shooting__gun img {
+    max-width: 150px;
+  }
 }
 
 @keyframes box {
